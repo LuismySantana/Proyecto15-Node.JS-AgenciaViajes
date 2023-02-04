@@ -1,0 +1,40 @@
+extends ./layout/index
+
+
+block slider
+    .slider
+        h1 Río de Janeiro
+        em aventura
+
+
+
+block contenido
+    main.container.mt-5
+        h2.text-center.mb-5 Sobre nosotros
+        .row.mb-5
+            .col-md-6
+                img.img-fluid(src="/img/inicio_nosotros.jpg", alt="Sobre nosotros")
+
+            .col-md-6 
+                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque rem quod placeat id. Veritatis, nostrum possimus. Nemo vel tempora possimus quas asperiores, sunt enim unde, atque minima nulla labore sapiente.
+                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas veniam consequuntur, minus labore harum, sapiente animi alias assumenda, pariatur voluptate veritatis. Corrupti autem consequatur dolorem vitae libero, mollitia enim fugiat.
+
+        
+        h2.text-center.mb-5 Descubre nuevos destinos
+        include ./layout/mixins
+        +viajesCards(viajesIndex)
+
+    .descuento
+        .container 
+            .row 
+                .col-md-6 
+                    .contenido 
+                        h3 5% de Descuento 
+                        p.titulo Viaje a Canadá
+                        p.fecha 20 de Marzo de #{currentYear} - 28 de Marzo de #{currentYear}
+                        p.precio 2,500€
+
+    .container
+        h2.mt-5.text-center Testimonios
+        include ./layout/mixins
+        +testimonialesCards(testimoniosIndex)

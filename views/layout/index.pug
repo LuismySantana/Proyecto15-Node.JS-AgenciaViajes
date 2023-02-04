@@ -1,0 +1,26 @@
+doctype html
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        
+        title #{pageName} | #{page}
+
+        link(href='https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Staatliches&display=swap' rel='stylesheet')
+        link(rel="stylesheet", href="/css/bootstrap.css")
+        link(rel="stylesheet", href="/css/style.css")
+
+    //- Sólo se añade la class "clase" si esta variable se mandara como parámetro del render
+    body(class= clase)
+        include header
+        block slider
+        block contenido
+        include footer
+
+        
+        
+        
+
+        //- Los include son divisones del contenido para no tenerlo todo en el mismo sitio
+        //- Los block son bloques de contenido que se añaden en extensiones del index y que al ser declarados alli generan el bloque. Si no hubiera bloque en alguna extension, simplemente no se usa

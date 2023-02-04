@@ -1,0 +1,33 @@
+extends ./layout/index
+
+block contenido
+    main.container.mt-5
+        h1.text-center.mt-5 #{page}
+
+        blockquote.text-center Lee sobre nuestro clientes
+
+        include ./layout/mixins
+        +testimonialesCards(testimoniosList)
+        
+        .row
+            h2.d-block.w-100.text-center Agrega un testimonial
+
+            .row.justify-content-center.col
+                .col-md-8 
+                    if error
+                        .alert.alert-danger.text-center= error
+                    form(action="/testimonios" method="POST")
+                        .form-group
+                            label(for="nameInput") Nombre
+                            input#nameInput.form-control(type="text", name="nameInput", placeholder="Tu nombre", value=(values ? values.name : "")) 
+                            //- En este caso debo comprar con si values existe porque recuerda que acceder al atributo de un ebjeto nulo siempre suelta un error, no puede hacerse de forma "normal"
+
+                        .form-group
+                            label(for="emailInput") Correo Electrónico
+                            input#emailInput.form-control(type="email", name="emailInput", placeholder="Tu Email", value=(values ? values.email : ""))
+                            
+                        .form-group
+                            label(for="messageInput") Mensaje
+                            textarea#messageInput.form-control.no-resize(name="messageInput", rows="3", placeholder="Tus mensajes") #{values ? values.message : ""}
+
+                        input.btn.btn-success.btn-block(type="submit")
